@@ -97,7 +97,11 @@ describe('configuration', () => {
           enabledDiscovery: true
         },
         relay: {
-          enabled: true
+          enabled: true,
+          hop: {
+            active: false,
+            enabled: false
+          }
         }
       }
     }
@@ -181,7 +185,11 @@ describe('configuration', () => {
           dht: true
         },
         relay: {
-          enabled: true
+          enabled: true,
+          hop: {
+            active: false,
+            enabled: false
+          }
         },
         dht: {
           kBucketSize: 20,
