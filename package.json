@@ -44,7 +44,6 @@
     "debug": "^4.1.0",
     "err-code": "^1.1.2",
     "fsm-event": "^2.1.0",
-    "joi": "^14.0.6",
     "kind-of": "^6.0.2",
     "libp2p-connection-manager": "~0.0.2",
     "libp2p-floodsub": "libp2p/js-libp2p-floodsub#fix/bundle-size",
@@ -56,7 +55,7 @@
     "peer-book": "libp2p/js-peer-book#fix/bundle-size",
     "peer-id": "libp2p/js-peer-id#feat/bundle-size",
     "peer-info": "libp2p/js-peer-info#feat/bundle-size",
-    "superstruct": "^0.6.0"
+    "superstruct": "~0.6.0"
   },
   "devDependencies": {
     "@nodeutils/defaults-deep": "^1.1.0",
