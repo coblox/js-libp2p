@@ -54,7 +54,8 @@ function stopTwo (nodes, callback) {
 // TODO: consider if all or some of those should come here
 describe('.pubsub', () => {
   describe('.pubsub on (default)', (done) => {
-    it('start two nodes and send one message, then unsubscribe', (done) => {
+    it('start two nodes and send one message, then unsubscribe', function (done) {
+      this.timeout(10e3)
       // Check the final series error, and the publish handler
       expect(2).checks(done)
 
