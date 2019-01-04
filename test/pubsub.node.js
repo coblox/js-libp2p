@@ -10,6 +10,7 @@ const expect = chai.expect
 const parallel = require('async/parallel')
 const series = require('async/series')
 const _times = require('lodash.times')
+const poll = require('./utils').poll
 
 const createNode = require('./utils/create-node')
 
@@ -72,8 +73,17 @@ describe('.pubsub', () => {
         }),
         // subscribe on the first
         (cb) => nodes[0].pubsub.subscribe('pubsub', handler, cb),
-        // Wait a moment before publishing
-        (cb) => setTimeout(cb, 500),
+        // Poll every 100ms until the second node has a registered peer
+        (cb) => {
+          poll((callback) => {
+            nodes[1].pubsub.peers('pubsub', (_, peers) => {
+              if (peers && peers.length > 0) {
+                return callback(null, true)
+              }
+              callback(null, false)
+            })
+          }, 100, cb)
+        },
         // publish on the second
         (cb) => nodes[1].pubsub.publish('pubsub', data, cb),
         // unsubscribe on the first
